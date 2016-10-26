@@ -1,0 +1,109 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AlgonquinMasterPage2.master.cs" Inherits="AlgonquinMasterPage2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Algonquin College</title>
+	<link rel="icon" href="http://www3.algonquincollege.com/sat/wp-content/themes/algonquincollege2013/favicon.ico" type="image/x-icon"/>
+	<link rel='stylesheet' runat="server" id='stylecss'  href='http://www3.algonquincollege.com/sat/wp-content/themes/algonquincollege2013/style.css' type='text/css' media='all'  />
+    <link rel='stylesheet' runat="server" id='Link1'  href='App_Themes/SiteStyles.css' type='text/css' media='all'  />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+<!-- begin header -->
+<header>
+
+	<a href="http://www.algonquincollege.com"><img src="http://www3.algonquincollege.com/sat/wp-content/themes/algonquincollege2013/images/logo2.png" alt="Algonquin College" id="logo"/></a>
+	
+	<a href="http://www3.algonquincollege.com/sat"><asp:image runat="server" id="programLogo"/></a>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderLogo" runat="server">
+    </asp:ContentPlaceHolder>
+	
+	<nav><div class="menu-local-nav-container"><ul id="menu-local-nav" class="menu"><li id="menu-item-3393" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8 current_page_item menu-item-3393"><a href="http://www3.algonquincollege.com/sat/">Home</a></li>
+	<li id="menu-item-3479" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3479"><a href="http://www3.algonquincollege.com/sat/home/programs/">Programs</a></li>
+	<li id="menu-item-3375" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3375"><a href="http://www3.algonquincollege.com/degree-pathways/list/">Degree Pathways</a></li>
+	<li id="menu-item-3395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3395"><a href="http://www3.algonquincollege.com/sat/home/news-events/">News and Events</a></li>
+	<li id="menu-item-3394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3394"><a href="http://www3.algonquincollege.com/sat/home/contact-us/">Contact</a></li>
+	</ul></div></nav>	
+</header>
+<!-- /header -->
+<!-- begin wrapper -->
+<div id="wrapper" style="min-height: 180px;">
+    <form id="form1" runat="server">
+	    <!-- begin leftWrapper -->
+	    <div id="leftWrapper">
+	
+	    <!-- begin main -->
+	    <div id="main" role="main">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+	    </div>
+	    <!-- /main -->
+	
+	    </div><!-- /leftWrapper -->
+	
+	    <!-- begin sidebar -->
+	    <aside id="sidebar" style="min-height: 160px;">
+		    <section>
+			    <div class="textwidget">
+                    <span class="button green"><asp:LinkButton ID="sidebarButton1" runat="server" CausesValidation="False" Text="<span><i class='icon-fnt_checkmark_rounded'></i></span>"></asp:LinkButton></span>
+			        <span class="button green"><asp:LinkButton ID="sidebarButton2" runat="server" CausesValidation="False" Text="<span><i class='icon-fnt_checkmark_rounded'></i></span>"></asp:LinkButton></span>   
+                    <span class="button green"><asp:LinkButton ID="sidebarButton3" runat="server" CausesValidation="False" Text="<span><i class='icon-fnt_checkmark_rounded'></i></span>"></asp:LinkButton></span>
+			    </div>
+		    </section>		
+	    </aside><!-- /sidebar --> 
+    </form>
+</div><!-- /wrapper -->
+
+<!-- begin footer -->
+<footer style=" min-height: 250px;">
+<div class="inside">
+	<section id="schools"  style="margin-left: 20px">
+		<img src="http://www3.algonquincollege.com/sat/wp-content/themes/algonquincollege2013/images/footerLogo.png" alt="Algonquin College"/>
+		<address>
+		<strong>Ottawa</strong><br/>
+		1385 Woodroffe Avenue<br/>
+		Ottawa, Ontario K2G 1V8<br/>
+		<a href="tel:6137274723">613-727-4723</a>
+		</address>
+	</section>
+
+	<section id="links" style="margin-top: 15px">
+		<ul class="quicklinks first" style="width: 150px">
+			<li>Quick Look</li>
+			<li><a href="http://www.algonquincollege.com/main_entry/menu_drop_down_alt.htm#about_jump">About</a></li>
+			<li><a href="http://www.algonquincollege.com/main_entry/menu_drop_down_alt.htm#admissions_jump">Admissions</a></li>
+			<li><a href="http://www.algonquincollege.com/main_entry/menu_drop_down_alt.htm#programs_jump">Programs/Courses</a></li>
+			<li><a href="http://www.algonquincollege.com/main_entry/menu_drop_down_alt.htm#schools_jump">Schools/Institutes</a></li>
+		</ul>
+
+		<ul class="quicklinks">
+			<li>Information For</li>
+			<li><a href="http://www3.algonquincollege.com/future-students/">Future Students</a></li>
+			<li><a href="http://www3.algonquincollege.com/international/">International Students</a></li>
+			<li><a href="http://www.algonquincollege.com/main/currentStudents/index.htm">Current Students</a></li>
+			<li><a href="http://www3.algonquincollege.com/alumni/">Alumni</a></li>
+		</ul>
+
+		<ul class="quicklinks">
+			<li>What's Popular</li>
+			<li><a href="http://algonquinsa.com/">Students Association</a></li>
+			<li><a href="http://www3.algonquincollege.com/ro/">Registrar's Office</a></li>
+			<li><a href="http://www.bookstore.algonquincollege.com/">Book Store</a></li>
+			<li><a href="http://algonquin.secure-shopping-online.com/">Computer Store</a></li>
+		</ul>
+	</section>
+	<ul id="horizontalList" class="copyright">
+		<li>&copy;2013 Algonquin College of Applied Arts and Technology &nbsp;&nbsp;</li>
+        <li>&nbsp;&nbsp; <a href="http://www3.algonquincollege.com/acmarketing/website-feedback/">Website Feedback</a></li>
+	</ul>
+
+</div>
+</footer>
+</body>
+</html>
