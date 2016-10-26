@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using StudentRegistrationEFDataModel;
 
 /// <summary>
 /// Summary description for RegistrationDataAccess
