@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using StudentRegistrationEFDataModel;
 
 /// <summary>
 /// Summary description for StudentComparer

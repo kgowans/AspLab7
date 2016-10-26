@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using StudentRegistrationEFDataModel;
+
+
+
 
 public partial class AddCourseOffering : PageBase
 { 
@@ -14,6 +18,9 @@ public partial class AddCourseOffering : PageBase
         {
             CourseDataAccess cda = new CourseDataAccess();
             List<Course> courseList = cda.GetCourses();
+            //StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
+            //List<Course> courseList = entityContext.Courses.ToList<Course>();
+
             courseList.Sort((x, y) => x.CourseName.CompareTo(y.CourseName));
             foreach (Course course in courseList)
             {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 using System.Data.SqlClient;
+using StudentRegistrationEFDataModel;
 
 /// <summary>
 /// Summary description for DataAccessBase
