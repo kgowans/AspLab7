@@ -10,6 +10,12 @@
         <EntityTypeShape EntityType="StudentRegistrationModel.Student" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="StudentRegistrationModel.FK_CourseOffering_ToCourse" ManuallyRouted="false" />
         <AssociationConnector Association="StudentRegistrationModel.Registration" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StudentRegistrationModel.FullTimeStudent" Width="1.5" PointX="4.25" PointY="3.5" />
+        <InheritanceConnector EntityType="StudentRegistrationModel.FullTimeStudent" />
+        <EntityTypeShape EntityType="StudentRegistrationModel.PartTimeStudent" Width="1.5" PointX="6.125" PointY="3.5" />
+        <InheritanceConnector EntityType="StudentRegistrationModel.PartTimeStudent" />
+        <EntityTypeShape EntityType="StudentRegistrationModel.CoopStudent" Width="1.5" PointX="8" PointY="3.5" />
+        <InheritanceConnector EntityType="StudentRegistrationModel.CoopStudent" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

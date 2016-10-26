@@ -131,13 +131,12 @@
           <NavigationProperty Name="Course" Relationship="Self.FK_CourseOffering_ToCourse" FromRole="CourseOffering" ToRole="Course" />
           <NavigationProperty Name="Students" Relationship="Self.Registration" FromRole="CourseOffering" ToRole="Student" />
         </EntityType>
-        <EntityType Name="Student">
+        <EntityType Name="Student" Abstract="true">
           <Key>
             <PropertyRef Name="StudentNum" />
           </Key>
           <Property Name="StudentNum" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CourseOfferings" Relationship="Self.Registration" FromRole="Student" ToRole="CourseOffering" />
         </EntityType>
         <Association Name="FK_CourseOffering_ToCourse">
@@ -169,6 +168,9 @@
             <End Role="Student" EntitySet="Students" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FullTimeStudent" BaseType="StudentRegistrationModel.Student" />
+        <EntityType Name="PartTimeStudent" BaseType="StudentRegistrationModel.Student" />
+        <EntityType Name="CoopStudent" BaseType="StudentRegistrationModel.Student" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -196,11 +198,28 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="StudentRegistrationModel.Student">
+            <EntityTypeMapping TypeName="IsTypeOf(StudentRegistrationModel.Student)">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="StudentNum" ColumnName="StudentNum" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(StudentRegistrationModel.FullTimeStudent)">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentNum" ColumnName="StudentNum" />
+                <Condition ColumnName="Type" Value="Full Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(StudentRegistrationModel.PartTimeStudent)">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentNum" ColumnName="StudentNum" />
+                <Condition ColumnName="Type" Value="Part Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(StudentRegistrationModel.CoopStudent)">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentNum" ColumnName="StudentNum" />
+                <Condition ColumnName="Type" Value="Coop Student" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
