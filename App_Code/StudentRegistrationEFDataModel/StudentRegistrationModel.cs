@@ -12,6 +12,15 @@ namespace StudentRegistrationEFDataModel
     using System;
     using System.Collections.Generic;
     
+    public partial class CoopStudent : Student
+    {
+    }
+}
+namespace StudentRegistrationEFDataModel
+{
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -57,7 +66,25 @@ namespace StudentRegistrationEFDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class FullTimeStudent : Student
+    {
+    }
+}
+namespace StudentRegistrationEFDataModel
+{
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class PartTimeStudent : Student
+    {
+    }
+}
+namespace StudentRegistrationEFDataModel
+{
+    using System;
+    using System.Collections.Generic;
+    
+    public abstract partial class Student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
@@ -67,7 +94,6 @@ namespace StudentRegistrationEFDataModel
     
         public string StudentNum { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CourseOffering> CourseOfferings { get; set; }
