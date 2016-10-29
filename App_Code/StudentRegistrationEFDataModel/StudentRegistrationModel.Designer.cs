@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Cody\Desktop\AspLab7\App_Code\StudentRegistrationEFDataModel\StudentRegistrationModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Kimi\Documents\Kims Computer Back Up\Semester 3\Web Programming Languages\Asp Labs\Lab7\App_Code\StudentRegistrationEFDataModel\StudentRegistrationModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
