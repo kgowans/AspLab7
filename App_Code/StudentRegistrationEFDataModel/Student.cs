@@ -21,9 +21,5 @@ namespace StudentRegistrationEFDataModel
             this.StudentNum = number;
             this.Name = name;
         }
-
-        public abstract double tuitionPayable();
     }
-
-
 }
