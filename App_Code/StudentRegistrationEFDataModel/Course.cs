@@ -10,6 +10,9 @@ namespace StudentRegistrationEFDataModel
 {
     public partial class Course 
     {
+        //I don't actually know how much this is supposed to be?
+        public static double CourseHourlyFeeRate = 80.0;
+
         public string CourseNumber
         { 
             get { return CourseID; }
