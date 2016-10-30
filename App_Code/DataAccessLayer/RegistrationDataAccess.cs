@@ -12,11 +12,11 @@ public class RegistrationDataAccess : DataAccessBase
 {
     public RegistrationDataAccess() : base() {}
 
-
-    // List<CourseOffering> GetRegisteredCourseOfferingByStudent(Student) 
-
     public int AddRegistration(Student student, CourseOffering courseOffering)
     {
+
+        StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
+
         int added;
         string insertRegistrationSQL =
             "INSERT INTO Registration "
@@ -48,6 +48,13 @@ public class RegistrationDataAccess : DataAccessBase
 
     public List<Student> GetRegistration(CourseOffering courseOffering)
     {
+        //StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
+        ////List<CourseOffering> courseOfferingList = entityContext.CourseOfferings.ToList<CourseOffering>();
+        //var student = (from c in courseOffering
+        //                where c.StudentNum == studentID
+        //                select c).FirstOrDefault<Student>();
+
+
         SqlDataReader reader = null;
         string selectSQL = "SELECT s.StudentNum, s.Name, s.Type FROM Student s "
                                 + "JOIN Registration r ON s.StudentNum = r.Student_StudentNum  "
@@ -90,10 +97,6 @@ public class RegistrationDataAccess : DataAccessBase
         return students;
     }
 
-    public List<CourseOffering> GetRegisteredCourseOfferingByStudent(Student student)
-    {
-        //TODO Implement  method return all the things
-        return null;
-    }
+
 
 }

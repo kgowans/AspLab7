@@ -18,8 +18,6 @@ public partial class AddCourseOffering : PageBase
         {
             CourseDataAccess cda = new CourseDataAccess();
             List<Course> courseList = cda.GetCourses();
-            //StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
-            //List<Course> courseList = entityContext.Courses.ToList<Course>();
 
             courseList.Sort((x, y) => x.CourseName.CompareTo(y.CourseName));
             foreach (Course course in courseList)
@@ -52,10 +50,18 @@ public partial class AddCourseOffering : PageBase
 
     protected void btnSubmitCourseOffering_Click(object sender, EventArgs e)
     {
-        CourseDataAccess cda = new CourseDataAccess();
-        Course selectedCourse = cda.GetCourseByID(drpCourse.SelectedValue);
-        CourseOfferingDataAccess coda = new CourseOfferingDataAccess();
-        coda.AddCourseOffering(new CourseOffering(selectedCourse, int.Parse(drpYears.SelectedValue), drpSemester.SelectedValue));
+        StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
+        var course = (from c in entityContext.Courses
+                      where c.CourseID == drpCourse.SelectedValue
+                      select c).FirstOrDefault<Course>();
+        CourseOffering courseOffering = new CourseOffering(course, int.Parse(drpYears.SelectedValue), drpSemester.SelectedValue);
+        entityContext.CourseOfferings.Add(courseOffering);
+        entityContext.SaveChanges();
+
+        //CourseDataAccess cda = new CourseDataAccess();
+        //Course selectedCourse = cda.GetCourseByID(drpCourse.SelectedValue);
+        //CourseOfferingDataAccess coda = new CourseOfferingDataAccess();
+        //coda.AddCourseOffering(new CourseOffering(selectedCourse, int.Parse(drpYears.SelectedValue), drpSemester.SelectedValue));
         drpCourse.SelectedIndex = drpYears.SelectedIndex = drpSemester.SelectedIndex = 0;
     }
 }
