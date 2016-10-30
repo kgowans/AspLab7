@@ -10,74 +10,80 @@ using StudentRegistrationEFDataModel;
 /// </summary>
 public class StudentDataAccess : DataAccessBase
 {
-    public StudentDataAccess() : base()
-    {
-        //
-        // TODO: Add constructor logic here
-        //
-    }
+    public StudentDataAccess() : base(){}
     
-    //if you use new  public const student you can do magix: @type, StudentType.Coop
-
-
-    public int AddStudent(Student student)
+    public void AddStudent(Student student)
     {
-        int added;
-        string insertStudentSQL = "INSERT INTO Student (StudentNum, Name, Type) VALUES (@studentNum, @name, @type)";
-        SqlCommand sqlCmd = new SqlCommand(insertStudentSQL, connection);
+        StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
+        entityContext.Students.Add(student);
+        entityContext.SaveChanges();
 
-        sqlCmd.Parameters.AddWithValue("@studentNum", student.Number);
-        sqlCmd.Parameters.AddWithValue("@name", student.Name);
-        sqlCmd.Parameters.AddWithValue("@type", StudentType.GetStudentType(student));
+        //int added;
+        //string insertStudentSQL = "INSERT INTO Student (StudentNum, Name, Type) VALUES (@studentNum, @name, @type)";
+        //SqlCommand sqlCmd = new SqlCommand(insertStudentSQL, connection);
 
-        try
-        {
-            connection.Open();
-            added = sqlCmd.ExecuteNonQuery();
-        }
-        catch(SqlException e)
-        {
-            added = -1;
-        }
-        finally
-        {
-            connection.Close();
-        }
+        //sqlCmd.Parameters.AddWithValue("@studentNum", student.Number);
+        //sqlCmd.Parameters.AddWithValue("@name", student.Name);
+        //sqlCmd.Parameters.AddWithValue("@type", StudentType.GetStudentType(student));
 
-        return added;
+        //try
+        //{
+        //    connection.Open();
+        //    added = sqlCmd.ExecuteNonQuery();
+        //}
+        //catch(SqlException e)
+        //{
+        //    added = -1;
+        //}
+        //finally
+        //{
+        //    connection.Close();
+        //}
+
+        //return added;
     }
 
     public Student GetStudentByID(string studentID)
     {
-        //Must initialize the variable before its used
-        SqlDataReader reader = null;
-        string selectStudentSQL = "SELECT * FROM Student WHERE StudentNum = @studentNum";
-        SqlCommand sqlCmd = new SqlCommand(selectStudentSQL, connection);
-        sqlCmd.Parameters.AddWithValue("@studentNum", studentID);
-        Student student = null;
+        StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
 
-        try
-        {
-            connection.Open();
-            reader = sqlCmd.ExecuteReader();
-            if (reader.Read())
-            {
-                string studentNum = (string)reader["StudentNum"];
-                string name = (string)reader["Name"];
-                string type = (string)reader["Type"];
-
-                student = StudentType.MakeStudent(name, studentNum, type);
-            }
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-        finally
-        {
-            if (reader != null) reader.Close();
-            connection.Close();
-        }
+        List<Student> studentList = entityContext.Students.ToList<Student>();
+        var student = (from c in studentList
+                        where c.StudentNum == studentID
+                        select c).FirstOrDefault<Student>();
         return student;
+
+
+
+        ////Must initialize the variable before its used
+        //SqlDataReader reader = null;
+        //string selectStudentSQL = "SELECT * FROM Student WHERE StudentNum = @studentNum";
+        //SqlCommand sqlCmd = new SqlCommand(selectStudentSQL, connection);
+        //sqlCmd.Parameters.AddWithValue("@studentNum", studentID);
+        //Student student = null;
+
+        //try
+        //{
+        //    connection.Open();
+        //    reader = sqlCmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
+        //        string studentNum = (string)reader["StudentNum"];
+        //        string name = (string)reader["Name"];
+        //        string type = (string)reader["Type"];
+
+        //        student = StudentType.MakeStudent(name, studentNum, type);
+        //    }
+        //}
+        //catch (Exception)
+        //{
+        //    throw;
+        //}
+        //finally
+        //{
+        //    if (reader != null) reader.Close();
+        //    connection.Close();
+        //}
+        //return student;
     }
 }
