@@ -22,6 +22,11 @@ namespace StudentRegistrationEFDataModel
             this.Name = name;
         }
 
+        //public int CompareTo(Student other)
+        //{
+        //    //if other is not a valid object reference, this instance will return 1
+        //}
+
         public abstract double tuitionPayable();
     }
 }

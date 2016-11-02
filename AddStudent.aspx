@@ -36,6 +36,26 @@
         <br />
     <asp:Button runat="server" OnClick="AddStudent_Click" Text="Add to Course Offering" />
     <div>
+
+                <asp:GridView Width="460" runat="server" AutoGenerateColumns="false" EmptyDataText="No Courses Added" ShowHeaderWhenEmpty="true" ID="gvAddCourse">
+                 <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
+                 <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
+                 <Columns>
+                   <asp:BoundField DataField="StudentID" HeaderText="ID" ReadOnly="True">
+                       <ItemStyle  Width ="80" />
+                   </asp:BoundField>
+                    <asp:BoundField DataField="CourseTitle" HeaderText="Course Title" ReadOnly="True">
+                        <ItemStyle  Width ="300" />
+                   </asp:BoundField>
+                   <asp:BoundField DataField="Type" HeaderText="Type" ReadOnly="True">
+                       <ItemStyle  Width ="80" />
+                   </asp:BoundField>
+                   <asp:BoundField DataField="Fee" HeaderText="Fee" ReadOnly="True">
+                       <ItemStyle  Width ="80" />
+                   </asp:BoundField>
+                </Columns>
+          </asp:GridView>
+
         <asp:Table runat="server" CssClass="table" ID="tblStudents">
             <asp:TableHeaderRow>
                 <asp:TableHeaderCell>

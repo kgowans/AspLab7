@@ -18,11 +18,10 @@ namespace StudentRegistrationEFDataModel
             double hours = 0;
 
             foreach (CourseOffering registeredCourses in this.CourseOfferings)
-            {
                 hours += registeredCourses.CourseOffered.WeeklyHours;
                 return hours * Course.CourseHourlyFeeRate;
-            }
-            return 0;
+            
+           
         }
     }
 }
