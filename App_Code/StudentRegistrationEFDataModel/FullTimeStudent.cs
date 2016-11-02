@@ -15,7 +15,7 @@ namespace StudentRegistrationEFDataModel
 
         public override double tuitionPayable()
         {
-            return 1000;
+            return 1000.0;
         }
     }
 }

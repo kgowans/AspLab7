@@ -13,17 +13,17 @@ public partial class AddStudent : PageBase
         base.Page_Load(sender, e);
         if (!Page.IsPostBack)
         {
-            CourseOfferingDataAccess coda = new CourseOfferingDataAccess();
-            List<CourseOffering> courseOfferingList = coda.GetCourseOfferings();
-            CourseOfferingComparer comparer = new CourseOfferingComparer();
-            courseOfferingList.Sort(comparer);
-            foreach (CourseOffering courseOffering in courseOfferingList)
-            {
-                string label = string.Format("{0} {1} {2} {3}", courseOffering.CourseOffered.CourseNumber, courseOffering.CourseOffered.CourseName, courseOffering.Year, courseOffering.Semester);
-                string value = string.Format("{0};{1};{2}", courseOffering.CourseOffered.CourseNumber, courseOffering.Year, courseOffering.Semester);
-                ListItem li = new ListItem(label, value);
-                drpCourseOfferingList.Items.Add(li);
-            }
+        //    CourseOfferingDataAccess coda = new CourseOfferingDataAccess();
+        //    List<CourseOffering> courseOfferingList = coda.GetCourseOfferings();
+        //    CourseOfferingComparer comparer = new CourseOfferingComparer();
+        //    courseOfferingList.Sort(comparer);
+        //    foreach (CourseOffering courseOffering in courseOfferingList)
+        //    {
+        //        string label = string.Format("{0} {1} {2} {3}", courseOffering.CourseOffered.CourseNumber, courseOffering.CourseOffered.CourseName, courseOffering.Year, courseOffering.Semester);
+        //        string value = string.Format("{0};{1};{2}", courseOffering.CourseOffered.CourseNumber, courseOffering.Year, courseOffering.Semester);
+        //        ListItem li = new ListItem(label, value);
+        //        drpCourseOfferingList.Items.Add(li);
+        //    }
         }
     }
 
@@ -31,7 +31,7 @@ public partial class AddStudent : PageBase
     {
         if (drpCourseOfferingList.SelectedIndex == 0)
         {
-            TableHelper.AddErrorRow(tblStudents, 3, "No Course Offering Selected!");
+           // TableHelper.AddErrorRow(tblStudents, 3, "No Course Offering Selected!");
             return;
         }
 
@@ -39,13 +39,13 @@ public partial class AddStudent : PageBase
         List<Student> studentList = courseOffering.GetStudents();
         if (studentList.Count == 0)
         {
-            TableHelper.AddErrorRow(tblStudents, 3, "No Students Registered for Course Offering!");
+          //  TableHelper.AddErrorRow(tblStudents, 3, "No Students Registered for Course Offering!");
         }
         else
         {
             foreach (Student student in studentList)
             {
-                TableHelper.AddRow(tblStudents, student.Number, student.Name, StudentType.GetStudentType(student));
+             //   TableHelper.AddRow(tblStudents, student.Number, student.Name, StudentType.GetStudentType(student));
             }
 
         }

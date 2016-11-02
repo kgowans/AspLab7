@@ -22,11 +22,9 @@ namespace StudentRegistrationEFDataModel
             double coopFee = 300;
 
             foreach(CourseOffering registeredCourses in this.CourseOfferings)
-            {
                 hours += registeredCourses.CourseOffered.WeeklyHours;
                 return hours * Course.CourseHourlyFeeRate + coopFee;
-            }
-            return 0;
+        
        }
 }
 

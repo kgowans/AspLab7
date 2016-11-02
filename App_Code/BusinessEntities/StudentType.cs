@@ -22,6 +22,8 @@ public class StudentType
     //    public const string Co-op = "Co-op";
     //}
 
+        
+
 
     public static string GetStudentType(Student student)
     {
