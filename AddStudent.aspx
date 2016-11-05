@@ -37,38 +37,25 @@
     <asp:Button runat="server" OnClick="AddStudent_Click" Text="Add to Course Offering" />
     <div>
 
-                <asp:GridView Width="460" runat="server" AutoGenerateColumns="false" EmptyDataText="No Courses Added" ShowHeaderWhenEmpty="true" ID="gvAddCourse">
-                 <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
-                 <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
-                 <Columns>
-                   <asp:BoundField DataField="StudentID" HeaderText="ID" ReadOnly="True">
-                       <ItemStyle  Width ="80" />
-                   </asp:BoundField>
-                    <asp:BoundField DataField="CourseTitle" HeaderText="Course Title" ReadOnly="True">
-                        <ItemStyle  Width ="300" />
-                   </asp:BoundField>
-                   <asp:BoundField DataField="Type" HeaderText="Type" ReadOnly="True">
-                       <ItemStyle  Width ="80" />
-                   </asp:BoundField>
-                   <asp:BoundField DataField="Fee" HeaderText="Fee" ReadOnly="True">
-                       <ItemStyle  Width ="80" />
-                   </asp:BoundField>
-                </Columns>
-          </asp:GridView>
-
-        <asp:Table runat="server" CssClass="table" ID="tblStudents">
-            <asp:TableHeaderRow>
-                <asp:TableHeaderCell>
-                    ID
-                </asp:TableHeaderCell>
-                <asp:TableHeaderCell>
-                    Name
-                </asp:TableHeaderCell>
-                <asp:TableHeaderCell>
-                    Type
-                </asp:TableHeaderCell>
-            </asp:TableHeaderRow>
-        </asp:Table>
+        <asp:GridView Width="460" runat="server" AutoGenerateColumns="false" EmptyDataText="No Course Offering Selected" ShowHeaderWhenEmpty="true" ID="gvAddStudent">
+            <EmptyDataRowStyle HorizontalAlign="Center" ForeColor="#FF0000" Font-Bold="true" />
+            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
+            <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
+            <Columns>
+                <asp:BoundField DataField="StudentID" HeaderText="ID" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>
+                <asp:BoundField DataField="CourseTitle" HeaderText="Course Title" ReadOnly="True">
+                    <ItemStyle  Width ="300" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Type" HeaderText="Type" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Fee" HeaderText="Fee" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>
+            </Columns>
+         </asp:GridView>
     </div>
 </asp:Content>
 

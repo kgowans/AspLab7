@@ -13,6 +13,10 @@ public partial class AddStudent : PageBase
         base.Page_Load(sender, e);
         if (!Page.IsPostBack)
         {
+            //TODO DataBind Course Offering Dropdown, maintain semi-colon seperated value
+            //TODO Sort Course Offering Dropdown
+
+
         //    CourseOfferingDataAccess coda = new CourseOfferingDataAccess();
         //    List<CourseOffering> courseOfferingList = coda.GetCourseOfferings();
         //    CourseOfferingComparer comparer = new CourseOfferingComparer();
@@ -31,7 +35,7 @@ public partial class AddStudent : PageBase
     {
         if (drpCourseOfferingList.SelectedIndex == 0)
         {
-           // TableHelper.AddErrorRow(tblStudents, 3, "No Course Offering Selected!");
+            gvAddStudent.EmptyDataText = "No Course Offering Selected";
             return;
         }
 
@@ -39,13 +43,13 @@ public partial class AddStudent : PageBase
         List<Student> studentList = courseOffering.GetStudents();
         if (studentList.Count == 0)
         {
-          //  TableHelper.AddErrorRow(tblStudents, 3, "No Students Registered for Course Offering!");
+            gvAddStudent.EmptyDataText = "No Students Registered";
         }
         else
         {
             foreach (Student student in studentList)
             {
-             //   TableHelper.AddRow(tblStudents, student.Number, student.Name, StudentType.GetStudentType(student));
+                //TODO Set GridView Datasource
             }
 
         }
@@ -55,6 +59,7 @@ public partial class AddStudent : PageBase
     {
         if (drpCourseOfferingList.SelectedValue != "-1")
         {
+            //TODO Replace with EF Context
             StudentDataAccess sda = new StudentDataAccess();
             Student student = sda.GetStudentByID(txtStudentNumber.Text);
 
@@ -70,6 +75,7 @@ public partial class AddStudent : PageBase
                 sda.AddStudent(student);
             }
 
+            //TODO Register student using EF
             CourseOffering courseOffering = GetCourseOfferingFromDropdown();
             RegistrationDataAccess rda = new RegistrationDataAccess();
             List<Student> registeredStudents = rda.GetRegistration(courseOffering);
@@ -86,7 +92,9 @@ public partial class AddStudent : PageBase
         string[] details = drpCourseOfferingList.SelectedValue.Split(';');
         string courseID = details[0];
         int year = int.Parse(details[1]);
-        string semester = details[2]; 
+        string semester = details[2];
+
+        //TODO Get Selected Course Offering using LINQ or whatever :P
         CourseOfferingDataAccess coda = new CourseOfferingDataAccess();
         return coda.GetCourseOfferingByKeys(year, semester, courseID);
     }

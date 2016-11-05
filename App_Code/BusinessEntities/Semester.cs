@@ -12,10 +12,10 @@ public class Semester
 
     public const string Fall = "Fall";
     public const string Winter = "Winter";
-    public const string SprintSummer = "Spring/Summer";
+    public const string SpringSummer = "Spring/Summer";
 
     public static List<string> ToList()
-    { return new List<string>() { Fall, Winter, SprintSummer }; }
+    { return new List<string>() { Fall, Winter, SpringSummer }; }
 
 
     //public static int Rank(string semester)

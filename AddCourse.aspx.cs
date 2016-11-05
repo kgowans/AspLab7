@@ -20,23 +20,15 @@ public partial class AddCourse : PageBase
         {
             //List<Course> courseList = entityContext.Courses.ToList<Course>();
             var courseList = (from c in entityContext.Courses
-                      orderby c.CourseTitle
-                      select new
-                      {
-                          CourseId = c.CourseID,
-                          CourseTitle = c.CourseTitle,
-                          WeeklyHours =  c.HoursPerWeek
-                      }).ToList();
+                              orderby c.CourseTitle
+                              select new
+                              {
+                                  CourseId = c.CourseID,
+                                  CourseTitle = c.CourseTitle,
+                                  WeeklyHours =  c.HoursPerWeek
+                              }).ToList();
 
-            //if (courseList.Count == 0)
-            //{
-            //   // TableHelper.AddErrorRow(tblAddCourse, 3, "No Course Records Exist!");
-            ////}
-            //else
-            //{ 
-                gvAddCourse.DataSource = courseList;
-                gvAddCourse.DataBind();
-            //}
+            gvAddCourse.DataSource = courseList;
         }
         DataBind();
         

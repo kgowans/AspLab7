@@ -32,23 +32,24 @@
     <br />
     <div>
         <asp:GridView Width="460" runat="server" AutoGenerateColumns="false" EmptyDataText="No Courses Added" ShowHeaderWhenEmpty="true" ID="gvAddCourseOffering">
-                 <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
-                 <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
-                 <Columns>
-                   <asp:BoundField DataField="CourseCode" HeaderText="Course Code" ReadOnly="True">
-                       <ItemStyle  Width ="100" />
-                   </asp:BoundField>
-                    <asp:BoundField DataField="Title" HeaderText="Course Title" ReadOnly="True">
-                        <ItemStyle  Width ="280" />
-                   </asp:BoundField>
-                   <asp:BoundField DataField="Year" HeaderText="Year" ReadOnly="True">
-                       <ItemStyle  Width ="80" />
-                   </asp:BoundField>
-                   <asp:BoundField DataField="Semester" HeaderText="Semester" ReadOnly="True">
-                       <ItemStyle  Width ="80" />
-                   </asp:BoundField>
-                </Columns>
-          </asp:GridView>
+            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
+            <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
+            <EmptyDataRowStyle HorizontalAlign="Center" ForeColor="#FF0000" Font-Bold="true" />
+            <Columns>
+                <asp:BoundField DataField="CourseCode" HeaderText="Course Code" ReadOnly="True">
+                    <ItemStyle  Width ="100" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Title" HeaderText="Course Title" ReadOnly="True">
+                    <ItemStyle  Width ="280" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Year" HeaderText="Year" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Semester" HeaderText="Semester" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>
+            </Columns>
+        </asp:GridView>
     </div>
 </asp:Content>
 

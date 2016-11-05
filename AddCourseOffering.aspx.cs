@@ -34,6 +34,7 @@ public partial class AddCourseOffering : PageBase
                 {
                     foreach (Course course in courseList)
                     {
+                        //TODO Set DataSource for Course, last slide in PPT 15
                         ListItem li = new ListItem(course.CourseNumber + " " + course.CourseName, course.CourseNumber);
                         drpCourse.Items.Add(li);
                     }
@@ -41,7 +42,6 @@ public partial class AddCourseOffering : PageBase
                 } 
             }
         }
-       // DataBind();
     }
 
     protected void Page_PreRender(object sender, EventArgs e)
@@ -61,9 +61,9 @@ public partial class AddCourseOffering : PageBase
                               }).ToList();
            
             gvAddCourseOffering.DataSource = courseOfferingList;
-            gvAddCourseOffering.DataBind();
-            
+
         }
+       
         DataBind();
     }
 
