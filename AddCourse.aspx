@@ -31,18 +31,19 @@
             <div>
                 
             <asp:GridView Width="460" runat="server" AutoGenerateColumns="false" EmptyDataText="No Courses Added" ShowHeaderWhenEmpty="true" ID="gvAddCourse">
-                 <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
-                 <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
-                 <Columns>
-                   <asp:BoundField DataField="CourseID" HeaderText="ID" ReadOnly="True">
-                       <ItemStyle  Width ="80" />
-                   </asp:BoundField>
+                <EmptyDataRowStyle HorizontalAlign="Center" ForeColor="#FF0000" Font-Bold="true" /> 
+                <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
+                <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
+                <Columns>
+                    <asp:BoundField DataField="CourseID" HeaderText="ID" ReadOnly="True">
+                        <ItemStyle  Width ="80" />
+                    </asp:BoundField>
                     <asp:BoundField DataField="CourseTitle" HeaderText="Name" ReadOnly="True">
                         <ItemStyle  Width ="300" />
-                   </asp:BoundField>
-                   <asp:BoundField DataField="WeeklyHours" HeaderText="Hours" ReadOnly="True">
-                       <ItemStyle  Width ="80" />
-                   </asp:BoundField>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="WeeklyHours" HeaderText="Hours" ReadOnly="True">
+                        <ItemStyle  Width ="80" />
+                    </asp:BoundField>
                 </Columns>
             </asp:GridView>
             </div>
