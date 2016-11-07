@@ -30,6 +30,8 @@ public class CourseOfferingDataAccess : DataAccessBase
     }
     public CourseOffering GetCourseOfferingByKeys(int year, string semester, string courseNumber)
     {
+
+
         //Must initialize the variable before its used
         SqlDataReader reader = null;
         string selectCourseOfferingSQL = "SELECT * FROM CourseOffering WHERE Year = @year AND Semester = @semester AND Course_CourseID = @courseID";

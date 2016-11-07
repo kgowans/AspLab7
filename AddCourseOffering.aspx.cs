@@ -7,8 +7,6 @@ using System.Web.UI.WebControls;
 using StudentRegistrationEFDataModel;
 
 
-
-
 public partial class AddCourseOffering : PageBase
 { 
     protected void Page_Load(object sender, EventArgs e)
@@ -25,21 +23,25 @@ public partial class AddCourseOffering : PageBase
 
             using (StudentRegistrationEntities entityContext = new StudentRegistrationEntities())
             {
-                List<Course> courseList = entityContext.Courses.ToList<Course>();
-                if(courseList.Count == 0)
+                var cs = (from c in entityContext.Courses
+                          orderby c.CourseTitle
+                          select new
+                          {
+                              CourseId = c.CourseID,
+                              CourseText = c.CourseID + " - " + c.CourseTitle
+                          }).ToList();
+                if (cs.Count() == 0)
                 {
                     Response.Redirect("AddCourse.aspx");
                 }
                 else
                 {
-                    foreach (Course course in courseList)
-                    {
-                        //TODO Set DataSource for Course, last slide in PPT 15
-                        ListItem li = new ListItem(course.CourseNumber + " " + course.CourseName, course.CourseNumber);
-                        drpCourse.Items.Add(li);
-                    }
-                    courseList.Sort((x, y) => x.CourseName.CompareTo(y.CourseName));
-                } 
+                    drpCourse.DataSource = cs;
+                    drpCourse.DataTextField = "CourseText";
+                    drpCourse.DataValueField = "CourseID";
+                    drpCourse.AppendDataBoundItems = true;
+
+                }
             }
         }
     }
@@ -49,7 +51,6 @@ public partial class AddCourseOffering : PageBase
 
         using (StudentRegistrationEntities entityContext = new StudentRegistrationEntities())
         {
-
             var courseOfferingList = (from c in entityContext.CourseOfferings
                               orderby c.Year, c.Semester, c.Course.CourseTitle
                               select new
