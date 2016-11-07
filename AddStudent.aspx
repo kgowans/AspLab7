@@ -34,13 +34,12 @@
             <br />
         </div>
         <br />
-    <asp:Button runat="server" OnClick="AddStudent_Click" Text="Add to Course Offering" />
+    <asp:Button runat="server" OnClick="AddStudent_Click" Text="Add Student to the Course Offering" />
     <div>
-
         <asp:GridView Width="460" runat="server" AutoGenerateColumns="false" EmptyDataText="No Course Offering Selected" ShowHeaderWhenEmpty="true" ID="gvAddStudent">
-            <EmptyDataRowStyle HorizontalAlign="Center" ForeColor="#FF0000" Font-Bold="true" />
             <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
             <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
+            <EmptyDataRowStyle HorizontalAlign="Center" ForeColor="#FF0000" Font-Bold="true" />
             <Columns>
                 <asp:BoundField DataField="StudentID" HeaderText="ID" ReadOnly="True">
                     <ItemStyle  Width ="80" />
