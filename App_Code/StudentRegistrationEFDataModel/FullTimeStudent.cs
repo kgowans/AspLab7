@@ -10,14 +10,12 @@ namespace StudentRegistrationEFDataModel
 {
     public partial class FullTimeStudent
     {
-        public FullTimeStudent(string number, string name) : base(number, name)
-        {
-
-        }
+        public FullTimeStudent(string number, string name) : base(number, name){}
+        public FullTimeStudent() : base() { }
 
         public override double tuitionPayable()
         {
-            return 1000;
+            return 1000.0;
         }
     }
 }

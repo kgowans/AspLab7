@@ -12,66 +12,26 @@ public class CourseOfferingDataAccess : DataAccessBase
 {
     public CourseOfferingDataAccess() : base() { }
 
-    public int AddCourseOffering(CourseOffering courseOffering)
+    public void AddCourseOffering(CourseOffering courseOffering)
     {
-        int added;
-        string insertCourseOfferingSQL = "INSERT INTO CourseOffering (Year, Semester, Course_CourseID) VALUES (@year, @Semester, @courseID)";
-        SqlCommand sqlCmd = new SqlCommand(insertCourseOfferingSQL, connection);
-
-        sqlCmd.Parameters.AddWithValue("@year", courseOffering.Year);
-        sqlCmd.Parameters.AddWithValue("@Semester", courseOffering.Semester);
-        sqlCmd.Parameters.AddWithValue("@courseID", courseOffering.CourseOffered.CourseNumber);
-
-        try
-        {
-            connection.Open();
-            added = sqlCmd.ExecuteNonQuery();
-        }
-        catch (SqlException e)
-        {
-            added = -1;
-        }
-        finally
-        {
-            connection.Close();
-        }
-        return added;
+        StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
+        entityContext.CourseOfferings.Add(courseOffering);
+        entityContext.SaveChanges();
+        
     }
 
     public List<CourseOffering> GetCourseOfferings()
     {
-        //Must initialize the variable before its used
-        SqlDataReader reader = null;
-        string selectCoursesSQL = "SELECT * FROM CourseOffering";
-        SqlCommand sqlCmd = new SqlCommand(selectCoursesSQL, connection);
-        List<CourseOffering> courseOfferings = new List<CourseOffering>();
+        StudentRegistrationEntities entityContext = new StudentRegistrationEntities();
+        List<CourseOffering> courseOfferingList = entityContext.CourseOfferings.ToList<CourseOffering>();
+        return courseOfferingList;
 
-        try
-        {
-            connection.Open();
-            reader = sqlCmd.ExecuteReader();
-            while (reader.Read())
-            {
-                CourseOffering courseOffering = BuildCourseOffering(reader);
-                courseOfferings.Add(courseOffering);
-
-            }
-
-        }
-        catch (Exception)
-        {
-
-            throw;
-        }
-        finally
-        {
-            if (reader != null) reader.Close();
-            connection.Close();
-        }
-        return courseOfferings;
+       
     }
     public CourseOffering GetCourseOfferingByKeys(int year, string semester, string courseNumber)
     {
+
+
         //Must initialize the variable before its used
         SqlDataReader reader = null;
         string selectCourseOfferingSQL = "SELECT * FROM CourseOffering WHERE Year = @year AND Semester = @semester AND Course_CourseID = @courseID";
@@ -123,4 +83,6 @@ public class CourseOfferingDataAccess : DataAccessBase
             
         return courseOffering;
     }
+
+
 }

@@ -27,6 +27,4 @@ public class PageBase : System.Web.UI.Page
 
 
     }
-    //TODO Set up a base for all the event handling of buttons for the other webpages.
-    //in Post_back you can use lamda expressions to do the event handling
 }

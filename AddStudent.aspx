@@ -34,21 +34,27 @@
             <br />
         </div>
         <br />
-    <asp:Button runat="server" OnClick="AddStudent_Click" Text="Add to Course Offering" />
+    <asp:Button runat="server" OnClick="AddStudent_Click" Text="Add Student to the Course Offering" />
     <div>
-        <asp:Table runat="server" CssClass="table" ID="tblStudents">
-            <asp:TableHeaderRow>
-                <asp:TableHeaderCell>
-                    ID
-                </asp:TableHeaderCell>
-                <asp:TableHeaderCell>
-                    Name
-                </asp:TableHeaderCell>
-                <asp:TableHeaderCell>
-                    Type
-                </asp:TableHeaderCell>
-            </asp:TableHeaderRow>
-        </asp:Table>
+        <asp:GridView Width="460" runat="server" AutoGenerateColumns="false" EmptyDataText="No Course Offering Selected" ShowHeaderWhenEmpty="true" ID="gvAddStudent">
+            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
+            <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
+            <EmptyDataRowStyle HorizontalAlign="Center" ForeColor="#FF0000" Font-Bold="true" />
+            <Columns>
+                <asp:BoundField DataField="StudentNum" HeaderText="ID" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Name" HeaderText="Name" ReadOnly="True">
+                    <ItemStyle  Width ="300" />
+                </asp:BoundField>
+               <%-- <asp:BoundField DataField="Type" HeaderText="Type" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>--%>
+               <%-- <asp:BoundField DataField="Fee" HeaderText="Tuition Payable" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>--%>
+            </Columns>
+         </asp:GridView>
     </div>
 </asp:Content>
 

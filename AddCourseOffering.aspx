@@ -19,40 +19,37 @@
     <asp:Label cssClass="label" runat="server" ID="lblYears" Width="8em">Offer in Year: </asp:Label>
         <asp:DropDownList CssClass="dropdown" ID="drpYears" runat="server" Width="10em" >
             <asp:ListItem Text="Select..." Value="-1"></asp:ListItem>
-            <asp:ListItem Text="2015" Value="2015"></asp:ListItem>
-            <asp:ListItem Text="2016" Value="2016"></asp:ListItem>
-            <asp:ListItem Text="2017" Value="2017"></asp:ListItem>
         </asp:DropDownList>  
     <br />
     <br />
     <asp:Label CssClass="label" runat="server" ID="lblSemester" Width="8em">Semester: </asp:Label>
         <asp:DropDownList CssClass="dropdown" ID="drpSemester" runat="server" Width="10em">
             <asp:ListItem Text="Select..." Value="-1"></asp:ListItem>
-            <asp:ListItem Text="Fall" Value="Fall"></asp:ListItem>
-            <asp:ListItem Text="Winter" Value="Winter"></asp:ListItem>
-            <asp:ListItem Text="Summer" Value="Summer"></asp:ListItem>
         </asp:DropDownList>
     <br />
     <br />
     <asp:Button runat="server" OnClick="btnSubmitCourseOffering_Click" Text="Add Course Offering:" />
     <br />
     <div>
-        <asp:Table runat="server" CssClass="table" ID="tblCourseOffering">
-            <asp:TableHeaderRow>
-                <asp:TableHeaderCell>
-                    Course Code
-                </asp:TableHeaderCell>
-                <asp:TableHeaderCell>
-                    Course Title
-                </asp:TableHeaderCell>
-                <asp:TableHeaderCell>
-                    Year
-                </asp:TableHeaderCell>
-                <asp:TableHeaderCell>
-                    Semester
-                </asp:TableHeaderCell>
-            </asp:TableHeaderRow>
-        </asp:Table>
+        <asp:GridView Width="460" runat="server" AutoGenerateColumns="false" EmptyDataText="No Courses Added" ShowHeaderWhenEmpty="true" ID="gvAddCourseOffering">
+            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />                    
+            <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
+            <EmptyDataRowStyle HorizontalAlign="Center" ForeColor="#FF0000" Font-Bold="true" />
+            <Columns>
+                <asp:BoundField DataField="CourseCode" HeaderText="Course Code" ReadOnly="True">
+                    <ItemStyle  Width ="100" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Title" HeaderText="Course Title" ReadOnly="True">
+                    <ItemStyle  Width ="280" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Year" HeaderText="Year" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Semester" HeaderText="Semester" ReadOnly="True">
+                    <ItemStyle  Width ="80" />
+                </asp:BoundField>
+            </Columns>
+        </asp:GridView>
     </div>
 </asp:Content>
 
