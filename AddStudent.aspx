@@ -41,18 +41,18 @@
             <HeaderStyle BackColor="#ff0080" Font-Bold="True" ForeColor="#F7F7F7" />
             <EmptyDataRowStyle HorizontalAlign="Center" ForeColor="#FF0000" Font-Bold="true" />
             <Columns>
-                <asp:BoundField DataField="StudentID" HeaderText="ID" ReadOnly="True">
+                <asp:BoundField DataField="StudentNum" HeaderText="ID" ReadOnly="True">
                     <ItemStyle  Width ="80" />
                 </asp:BoundField>
-                <asp:BoundField DataField="CourseTitle" HeaderText="Course Title" ReadOnly="True">
+                <asp:BoundField DataField="Name" HeaderText="Name" ReadOnly="True">
                     <ItemStyle  Width ="300" />
                 </asp:BoundField>
-                <asp:BoundField DataField="Type" HeaderText="Type" ReadOnly="True">
+               <%-- <asp:BoundField DataField="Type" HeaderText="Type" ReadOnly="True">
                     <ItemStyle  Width ="80" />
-                </asp:BoundField>
-                <asp:BoundField DataField="Fee" HeaderText="Fee" ReadOnly="True">
+                </asp:BoundField>--%>
+               <%-- <asp:BoundField DataField="Fee" HeaderText="Tuition Payable" ReadOnly="True">
                     <ItemStyle  Width ="80" />
-                </asp:BoundField>
+                </asp:BoundField>--%>
             </Columns>
          </asp:GridView>
     </div>

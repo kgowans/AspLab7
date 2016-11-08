@@ -36,6 +36,8 @@ public partial class AddStudent : PageBase
                     drpCourseOfferingList.DataValueField = "CourseCode";
                     drpCourseOfferingList.AppendDataBoundItems = true;
                     drpCourseOfferingList.DataBind();
+
+                    
                 }
             }
         }
@@ -48,68 +50,20 @@ public partial class AddStudent : PageBase
 
         using (StudentRegistrationEntities entityContext = new StudentRegistrationEntities())
         {
-            //string selectSQL = "SELECT s.StudentNum, s.Name, s.Type FROM Student s "
-            //            + "JOIN Registration r ON s.StudentNum = r.Student_StudentNum  "
-            //            + "WHERE r.CourseOffering_Course_CourseID = @courseID "
-            //            + "  AND r.CourseOffering_Year = @year "
-            //            + "  AND r.CourseOffering_Semester = @Semester";
-
-            ////example
-            ////from s in dc.Students
-            ////from c in s.Courses
-            ////where c.CourseID == courseID
-            ////select s;
-
-
-            //var studentList = (from student in entityContext.Students
-            //                   from co in student.CourseOfferings
-            //                   where co.CourseOffered.CourseID == Course_CourseID
-            //                   select new
-            //                   {
-            //                       StudentID = student.Number,
-            //                       Name = student.Name,
-            //                       Type = student.GetType(),
-            //                       Fee = student.tuitionPayable()
-            //                   };
-
-
-            ////var studentList = (from student in entityContext.Students
-            ////                   from co in entityContext.CourseOfferings
-            ////                   on student.CourseOfferings equals co.Students
-            ////                   select new {
-            ////                       StudentID = student.Number,
-            ////                       Name = student.Name,
-            ////                       Type = student.GetType(),
-            ////                       Fee = student.tuitionPayable()
-            ////                   };
-
-            //gvAddStudent.DataSource = courseOfferingList;
-            //gvAddStudent.DataBind();
+            CourseOffering courseOffering = GetCourseOfferingFromDropdown(entityContext);
+            List<Student> studentList = courseOffering.Students.ToList<Student>();
+            gvAddStudent.DataSource = studentList;
 
             if (drpCourseOfferingList.SelectedIndex == 0)
             {
                 gvAddStudent.EmptyDataText = "No Course Offering Selected";
-                return;
             }
-
-            CourseOffering courseOffering = GetCourseOfferingFromDropdown();
-            List<Student> studentList = courseOffering.GetStudents();
-
-
-            if (studentList.Count == 0)
+            else if (studentList.Count == 0)
             {
                 gvAddStudent.EmptyDataText = "No Students Registered";
             }
-            else
-            {
 
-
-                gvAddStudent.DataBind();
-
-                //TODO BUILD TABLE
-
-
-            }
+            gvAddStudent.DataBind();
 
         }
         //DataBind();
@@ -140,7 +94,7 @@ public partial class AddStudent : PageBase
                 }
 
                 //TODO Register student using EF
-                CourseOffering courseOffering = GetCourseOfferingFromDropdown();
+                CourseOffering courseOffering = GetCourseOfferingFromDropdown(entityContext);
 
                 RegistrationDataAccess rda = new RegistrationDataAccess();
                 List<Student> registeredStudents = rda.GetRegistration(courseOffering);
@@ -152,19 +106,19 @@ public partial class AddStudent : PageBase
         }
     }
 
-    protected CourseOffering GetCourseOfferingFromDropdown()
+    protected CourseOffering GetCourseOfferingFromDropdown(StudentRegistrationEntities entityContext)
     {
         string[] details = drpCourseOfferingList.SelectedValue.Split(';');
+        if(details.Count() < 3)
+            return new CourseOffering();
+
         string courseID = details[0];
         int year = int.Parse(details[1]);
         string semester = details[2];
 
-        using (StudentRegistrationEntities entityContext = new StudentRegistrationEntities())
-        {
-            var cos = (from co in entityContext.CourseOfferings
+        var cos = (from co in entityContext.CourseOfferings
                        where co.Course.CourseID == courseID && co.Year == year && co.Semester == semester
                        select co).FirstOrDefault<CourseOffering>();
-            return cos;
-        }
+        return cos;
     }
 }
