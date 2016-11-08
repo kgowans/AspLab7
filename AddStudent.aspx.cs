@@ -86,10 +86,7 @@ public partial class AddStudent : PageBase
                     entityContext.SaveChanges();
                 }
 
-                //TODO Register student using EF
                 CourseOffering courseOffering = GetCourseOfferingFromDropdown(entityContext);
-
-                //List<Student> registeredStudents = rda.GetRegistration(courseOffering);
                 List<Student> registeredStudents = courseOffering.Students.ToList<Student>();
                 if (!registeredStudents.Exists(x => x.Number == student.Number))
                 {
