@@ -15,7 +15,6 @@ public partial class AddCourse : PageBase
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
-        
         using (StudentRegistrationEntities entityContext = new StudentRegistrationEntities())
         {
             //List<Course> courseList = entityContext.Courses.ToList<Course>();
