@@ -21,19 +21,19 @@ namespace StudentRegistrationEFDataModel
             get { return tuitionPayable();  }
         }
 
+        public string TypeOfStudent
+        {
+            get { return typeOfStudent(); }
+        }
 
-        public Student(string number, string name, double fee) : this()
+        public Student(string number, string name) : this()
         {
             this.StudentNum = number;
             this.Name = name;
-            //fee = Fee;
         }
 
-        //public int CompareTo(Student other)
-        //{
-        //    //if other is not a valid object reference, this instance will return 1
-        //}
-
         public abstract double tuitionPayable();
+
+        public abstract string typeOfStudent();
     }
 }

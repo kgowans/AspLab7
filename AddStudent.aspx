@@ -47,12 +47,12 @@
                 <asp:BoundField DataField="Name" HeaderText="Name" ReadOnly="True">
                     <ItemStyle  Width ="300" />
                 </asp:BoundField>
-               <%-- <asp:BoundField DataField="Type" HeaderText="Type" ReadOnly="True">
+               <asp:BoundField DataField="TypeOfStudent" HeaderText="Type" ReadOnly="True">
+                    <ItemStyle  Width ="140" />
+                </asp:BoundField>
+               <asp:BoundField DataField="Fee" HeaderText="Tuition Payable" ReadOnly="True">
                     <ItemStyle  Width ="80" />
-                </asp:BoundField>--%>
-               <%-- <asp:BoundField DataField="Fee" HeaderText="Tuition Payable" ReadOnly="True">
-                    <ItemStyle  Width ="80" />
-                </asp:BoundField>--%>
+                </asp:BoundField>
             </Columns>
          </asp:GridView>
     </div>

@@ -17,5 +17,10 @@ namespace StudentRegistrationEFDataModel
         {
             return 1000.0;
         }
+
+        public override string typeOfStudent()
+        {
+            return StudentType.FullTime;
+        }
     }
 }
