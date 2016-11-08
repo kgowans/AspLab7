@@ -12,7 +12,6 @@ public partial class AddCourseOffering : PageBase
     protected void Page_Load(object sender, EventArgs e)
     {
         base.Page_Load(sender, e);
-        
 
         if (!Page.IsPostBack)
         {
@@ -48,7 +47,6 @@ public partial class AddCourseOffering : PageBase
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
-
         using (StudentRegistrationEntities entityContext = new StudentRegistrationEntities())
         {
             var courseOfferingList = (from c in entityContext.CourseOfferings
@@ -62,9 +60,7 @@ public partial class AddCourseOffering : PageBase
                               }).ToList();
            
             gvAddCourseOffering.DataSource = courseOfferingList;
-
         }
-       
         DataBind();
     }
 
@@ -81,5 +77,4 @@ public partial class AddCourseOffering : PageBase
         }
         drpCourse.SelectedIndex = drpYears.SelectedIndex = drpSemester.SelectedIndex = 0;
     }
-
 }

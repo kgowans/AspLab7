@@ -36,18 +36,13 @@ public partial class AddStudent : PageBase
                     drpCourseOfferingList.DataValueField = "CourseCode";
                     drpCourseOfferingList.AppendDataBoundItems = true;
                     drpCourseOfferingList.DataBind();
-
-                    
                 }
             }
         }
     }
 
-
-
     protected void Page_PreRender(object sender, EventArgs e)
     {
-
         using (StudentRegistrationEntities entityContext = new StudentRegistrationEntities())
         {
             CourseOffering courseOffering = GetCourseOfferingFromDropdown(entityContext);
@@ -64,9 +59,7 @@ public partial class AddStudent : PageBase
             }
 
             gvAddStudent.DataBind();
-
         }
-        //DataBind();
     }
 
     protected void AddStudent_Click(object sender, EventArgs e)
@@ -96,11 +89,12 @@ public partial class AddStudent : PageBase
                 //TODO Register student using EF
                 CourseOffering courseOffering = GetCourseOfferingFromDropdown(entityContext);
 
-                RegistrationDataAccess rda = new RegistrationDataAccess();
-                List<Student> registeredStudents = rda.GetRegistration(courseOffering);
+                //List<Student> registeredStudents = rda.GetRegistration(courseOffering);
+                List<Student> registeredStudents = courseOffering.Students.ToList<Student>();
                 if (!registeredStudents.Exists(x => x.Number == student.Number))
                 {
-                    rda.AddRegistration(student, courseOffering);
+                    courseOffering.Students.Add(student);
+                    entityContext.SaveChanges();
                 }
             }
         }
