@@ -16,10 +16,17 @@ namespace StudentRegistrationEFDataModel
             set { StudentNum = value; }
         }
 
-        public Student(string number, string name) : this()
+        public double Fee
+        {
+            get { return tuitionPayable();  }
+        }
+
+
+        public Student(string number, string name, double fee) : this()
         {
             this.StudentNum = number;
             this.Name = name;
+            //fee = Fee;
         }
 
         //public int CompareTo(Student other)
