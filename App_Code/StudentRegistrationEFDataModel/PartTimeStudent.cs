@@ -21,8 +21,11 @@ namespace StudentRegistrationEFDataModel
                 hours += registeredCourses.CourseOffered.WeeklyHours;
 
             return hours * Course.CourseHourlyFeeRate;
-            
-           
+        }
+
+        public override string typeOfStudent()
+        {
+            return StudentType.PartTime;
         }
     }
 }

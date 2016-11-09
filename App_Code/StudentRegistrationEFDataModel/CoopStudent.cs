@@ -24,9 +24,13 @@ namespace StudentRegistrationEFDataModel
             foreach(CourseOffering registeredCourses in this.CourseOfferings)
                 hours += registeredCourses.CourseOffered.WeeklyHours;
                 return hours * Course.CourseHourlyFeeRate + coopFee;
-        
        }
-}
+
+        public override string typeOfStudent()
+        {
+            return StudentType.Coop;
+        }
+    }
 
 
 }
